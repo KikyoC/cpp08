@@ -27,8 +27,4 @@ class MutantStack: public std::stack<T>
 		{
 			return std::stack<T>::c.end();
 		}
-		void push(T e)
-		{
-			std::stack<T>::c.push(e);
-		}
 };
