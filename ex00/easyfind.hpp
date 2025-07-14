@@ -3,7 +3,7 @@
 template <typename T>
 int easyfind(T &container, int toFind)
 {
-	for (int i = 0; container[i]; i++)
+	for (unsigned long i = 0; i < container.size(); i++)
 		if (container[i] == toFind)
 			return i;
 	return (-1);
