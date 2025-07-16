@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <vector>
 
+Span::Span(): max(10), actual(0) {}
+
 Span::Span(unsigned int N): max(N), actual(0)
 {}
 
