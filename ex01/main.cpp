@@ -1,10 +1,12 @@
 #include "Span.hpp"
+#include <cstdlib>
+#include <exception>
 #include <iostream>
 #include <vector>
 
-int main()
+int main(int argc, char **argv)
 {
-	Span sp = Span(5);
+	Span sp = Span(argc);
 	// sp.addNumber(6);
 	// sp.addNumber(3);
 	// sp.addNumber(17);
@@ -12,16 +14,20 @@ int main()
 	// sp.addNumber(11);
 
 	std::vector<int> lst;
-	lst.push_back(6);
-	lst.push_back(3);
-	lst.push_back(17);
-	lst.push_back(9);
-	lst.push_back(11);
-
-
+	while (argc > 1)
+	{
+		argc--;
+		lst.push_back(std::atoi(argv[argc]));
+	}
 	sp.addNumber(lst);
-
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
+	
+	try {
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return 0;
 }
