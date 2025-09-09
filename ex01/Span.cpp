@@ -39,7 +39,6 @@ const char *Span::ToFewElementsException::what() const throw()
 	return "Error: There is not enough stored elements to perform this action";
 }
 
-
 void Span::addNumber(int i)
 {
 	if (this->stored.size() >= this->max)
@@ -49,6 +48,8 @@ void Span::addNumber(int i)
 
 void Span::addNumber(std::vector<int> lst)
 {
+	if (lst.size() + this->stored.size() >= this->max)
+		throw SpanFullException();
 	for (unsigned int i = 0; i < lst.size(); i++)
 		this->addNumber(lst[i]);
 }
@@ -62,7 +63,7 @@ int Span::shortestSpan() const
 		throw ToFewElementsException();
 	std::sort(tmp.begin(), tmp.end());
 	minimum = tmp[1] - tmp[0];
-	for (unsigned long i = 2; this->stored.size() > i; i++)
+	for (unsigned long i = 1; this->stored.size() > i; i++)
 		if (tmp[i] - tmp[i - 1] < minimum)
 			minimum = tmp[i] - tmp[i - 1];
 	return (minimum);
