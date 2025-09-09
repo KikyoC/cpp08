@@ -41,6 +41,11 @@ class Span
 		{
 			virtual const char *what() const throw();
 		};
+	
+		class OverflowException: public std::exception
+		{
+			virtual const char *what() const throw();
+		};
 
 
 	private:
