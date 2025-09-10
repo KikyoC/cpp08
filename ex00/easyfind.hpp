@@ -1,15 +1,22 @@
 #pragma once
 
+#include <algorithm>
 #include <exception>
+
 template <typename T>
-unsigned int easyfind(T &container, int toFind)
+typename T::iterator easyfind(T &container, int toFind)
 {
-	unsigned int i = 0;
-	for (typename T::iterator it = container.begin(); it != container.end(); it++)
-	{
-		if (*it == toFind)
-			return i;
-		i++;
-	}
-	throw std::exception();
+	typename T::iterator it = std::find(container.begin(), container.end(), toFind);
+	if (it == container.end())
+		throw std::exception();
+	return it;
+}
+
+template <typename T>
+const typename T::const_iterator easyfind(const T &container, int toFind)
+{
+	typename T::const_iterator it = std::find(container.begin(), container.end(), toFind);
+	if (it == container.end())
+		throw std::exception();
+	return it;
 }
