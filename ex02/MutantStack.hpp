@@ -56,6 +56,4 @@ class MutantStack: public std::stack<T>
 		{
 			return std::stack<T>::c.rend();
 		}
-
-
 };
