@@ -14,7 +14,19 @@ int main()
 		ar.push_back(10);
 		ar.push_back(8);
 		ar.push_back(1);
-		std::cout << easyfind(ar, 1) << std::endl;
+		const std::vector<int> constAr = ar;
+		std::cout << *easyfind(constAr, 1) << std::endl;
+	}
+	{
+		std::vector<int> ar;
+
+		ar.push_back(2);
+		ar.push_back(4);
+		ar.push_back(6);
+		ar.push_back(10);
+		ar.push_back(8);
+		ar.push_back(1);
+		std::cout << *easyfind(ar, 1) << std::endl;
 	}
 	{
 		std::vector<int> ar;
@@ -24,7 +36,7 @@ int main()
 		ar.push_back(6);
 		ar.push_back(10);
 		ar.push_back(8);
-		std::cout << easyfind(ar, 1) << std::endl;
+		std::cout << *easyfind(ar, 1) << std::endl;
 	}
 	{
 		std::list<int> ar;
@@ -35,7 +47,7 @@ int main()
 		ar.push_back(8);
 		try
 		{
-			std::cout << easyfind(ar, 1) << std::endl;
+			std::cout << *easyfind(ar, 1) << std::endl;
 		}
 		catch (std::exception &ignored)
 		{
